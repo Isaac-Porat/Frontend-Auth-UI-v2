@@ -10,48 +10,49 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a className="flex items-center space-x-1 rtl:space-x-reverse">
-          <RxComponentBoolean className="w-5 h-5"/>
-          <Link to="/" className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SaaS</Link>
-        </a>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          {user ? (
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button className="bg-green-700 hover:bg-green-800">Account</Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-56">
-                <div className="grid gap-4">
-                  {/* <div className="font-medium">Logged in as {user.email}</div> */}
-                  <Button onClick={logout} variant="outline">Log out</Button>
-                </div>
-              </PopoverContent>
-            </Popover>
-          ) : (
-            <Link to="/auth" className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-              Sign up
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center space-x-1 rtl:space-x-reverse">
+              <RxComponentBoolean className="w-8 h-8 text-green-600"/>
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SaaS</span>
             </Link>
-          )}
-          <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
-            <span className="sr-only">Open main menu</span>
-            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
-            </svg>
-          </button>
-        </div>
-        <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-              <Link to="/product" className="block py-2 px-3 text-white bg-green-700 rounded md:bg-transparent md:text-green-700 md:p-0 md:dark:text-green-500" aria-current="page">Product</Link>
-            </li>
-            <li>
-              <Link to="/pricing" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</Link>
-            </li>
-            <li>
-              <Link to="/contact" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-700 md:p-0 md:dark:hover:text-green-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact us</Link>
-            </li>
-          </ul>
+          </div>
+
+          {/* Right side elements */}
+          <div className="flex items-center space-x-4">
+            {/* Navigation Links */}
+            <Link to="/product" className="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">
+              Product
+            </Link>
+            <Link to="/pricing" className="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">
+              Pricing
+            </Link>
+            <Link to="/contact" className="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">
+              Contact us
+            </Link>
+
+            {/* Account Button */}
+            {user ? (
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button className="bg-green-600 hover:bg-green-700 text-white">Account</Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-56">
+                  <div className="grid gap-4">
+                    <Button onClick={logout} variant="outline">Log out</Button>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            ) : (
+              <Link to="/auth">
+                <Button className="bg-green-600 hover:bg-green-700 text-white">
+                  Sign up
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </nav>

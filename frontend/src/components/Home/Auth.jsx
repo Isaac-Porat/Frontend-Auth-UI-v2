@@ -48,7 +48,7 @@ const Auth = () => {
 
       if (success) {
         setResponse({ type: 'success', message: `${isLogin ? 'Login' : 'Registration'} successful!` });
-        navigate('/dashboard');
+        navigate('/');
       } else {
         throw new Error(`${isLogin ? 'Login' : 'Registration'} failed`);
       }
@@ -109,27 +109,29 @@ const Auth = () => {
   );
 
   return (
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <Card className="w-[350px] mx-auto">
-        <CardHeader>
-          <CardTitle>Authentication</CardTitle>
-          <CardDescription>Login or create a new account</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value)}>
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="login">Login</TabsTrigger>
-              <TabsTrigger value="signup">Sign Up</TabsTrigger>
-            </TabsList>
-            <TabsContent value="login">
-              <AuthForm action="login" />
-            </TabsContent>
-            <TabsContent value="signup">
-              <AuthForm action="signup" />
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-      </Card>
+    <div className="min-h-screen flex flex-col justify-center py-12">
+      <div className="max-w-md w-full mx-auto">
+        <Card>
+          <CardHeader>
+            <CardTitle>Authentication</CardTitle>
+            <CardDescription>Login or create a new account</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value)}>
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="login">Login</TabsTrigger>
+                <TabsTrigger value="signup">Sign Up</TabsTrigger>
+              </TabsList>
+              <TabsContent value="login">
+                <AuthForm action="login" />
+              </TabsContent>
+              <TabsContent value="signup">
+                <AuthForm action="signup" />
+              </TabsContent>
+            </Tabs>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
